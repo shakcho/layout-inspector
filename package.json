@@ -1,0 +1,90 @@
+{
+  "name": "layout-inspector",
+  "version": "0.1.0",
+  "description": "DevTools-style layout inspector for React. Hover any element for tag, selector, dimensions, font, WCAG contrast, ARIA role, accessible name, and a11y state.",
+  "type": "module",
+  "sideEffects": false,
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "astro dev --root demo",
+    "build": "vite build && tsc --emitDeclarationOnly",
+    "build:demo": "astro build --root demo",
+    "preview:demo": "astro preview --root demo",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky",
+    "prepublishOnly": "npm run build"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,css}": [
+      "prettier --write"
+    ]
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@astrojs/react": "^5.0.4",
+    "@astrojs/sitemap": "^3.7.2",
+    "@eslint/js": "^9.39.4",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "astro": "^6.2.1",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.6.0",
+    "husky": "^9.1.7",
+    "jsdom": "^29.0.1",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.3",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "shiki": "^4.0.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.59.1",
+    "vite": "^8.0.0",
+    "vitest": "^4.1.2"
+  },
+  "keywords": [
+    "layout-inspector",
+    "layout",
+    "inspector",
+    "react",
+    "devtools",
+    "element-picker",
+    "picker",
+    "box-model",
+    "accessibility",
+    "a11y",
+    "wcag",
+    "contrast"
+  ],
+  "license": "MIT",
+  "author": "Sakti Kumar Chourasia"
+}

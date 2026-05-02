@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+import WidgetHeader from '../components/WidgetHeader.astro';
+import InstallSection from '../components/InstallSection.astro';
+import ApiTable from '../components/ApiTable.astro';
+import CodeExamplesSection from '../components/CodeExamplesSection.astro';
+import GitHubCTA from '../components/GitHubCTA.astro';
+import { InspectorIcon } from '../components/islands/Icons';
+import LayoutInspectorDemo from '../components/islands/LayoutInspectorDemo';
+import { layoutInspectorMeta } from '../data/layoutInspector';
+
+const title = `${layoutInspectorMeta.title} — DevTools-style layout inspector for React`;
+
+const softwareJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareSourceCode',
+  name: 'layout-inspector',
+  description: layoutInspectorMeta.metaDescription,
+  codeRepository: 'https://github.com/shakcho/layout-inspector',
+  programmingLanguage: 'TypeScript',
+  runtimePlatform: 'React 18, React 19',
+  license: 'https://github.com/shakcho/layout-inspector/blob/main/LICENSE',
+  url: 'https://layout-inspector.saktichourasia.dev/',
+  author: {
+    '@type': 'Person',
+    name: 'Sakti Kumar Chourasia',
+    url: 'https://saktichourasia.dev',
+  },
+  sameAs: ['https://www.npmjs.com/package/layout-inspector'],
+};
+
+const faq = [
+  {
+    q: 'What is layout-inspector?',
+    a: 'layout-inspector is a small React component that drops a Chrome-DevTools-style element picker into your own app. Hover any element to see its tag, selector, dimensions, font, foreground/background colors with WCAG contrast, ARIA role, accessible name, and a11y state. Click to select. Useful for design QA, a11y audits, and pair-debugging without leaving the page.',
+  },
+  {
+    q: 'Does layout-inspector support React 19?',
+    a: 'Yes. layout-inspector declares peer dependencies of react@^18 || ^19 and react-dom@^18 || ^19, so it works with React 18 and React 19 without changes.',
+  },
+  {
+    q: 'How is this different from Chrome DevTools?',
+    a: 'It runs in your app, not in the browser panel — so designers, PMs, and QA can use it without opening DevTools. The bubble surfaces high-signal info in one glance (size, font, contrast, role, accessible name) and you can wire on.select to build your own design-token / a11y workflows on top.',
+  },
+  {
+    q: 'How do I install layout-inspector?',
+    a: 'Install with npm install layout-inspector, yarn add layout-inspector, or pnpm add layout-inspector. It has zero runtime dependencies and ships at ~6 kB gzipped.',
+  },
+  {
+    q: 'Does it interfere with my own UI?',
+    a: 'No. The overlay carries data-layout-inspector-ignore so it never picks itself. Add the same attribute to your own toolbar / toggle button to exempt it from selection, or pass behavior.ignoreSelector with a CSS selector for everything you want skipped.',
+  },
+];
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+};
+---
+
+<Layout
+  title={title}
+  description={layoutInspectorMeta.metaDescription}
+  path="/"
+  jsonLd={[softwareJsonLd, faqJsonLd]}
+>
+  <WidgetHeader
+    icon={InspectorIcon}
+    title={layoutInspectorMeta.title}
+    description={layoutInspectorMeta.tagline}
+  />
+
+  <InstallSection id="install" />
+
+  <section id="demo" class="section" style="padding-top: 16px;">
+    <div class="section-label">Interactive Demo</div>
+    <LayoutInspectorDemo client:load />
+  </section>
+
+  <section id="api" class="section" style="padding-top: 0;">
+    <div class="section-label">API Reference</div>
+    <ApiTable
+      rows={layoutInspectorMeta.apiRows}
+      footnoteHtml={layoutInspectorMeta.apiFootnoteHtml}
+    />
+  </section>
+
+  <CodeExamplesSection
+    id="examples"
+    examples={layoutInspectorMeta.codeExamples}
+    typesCode={layoutInspectorMeta.typesCode}
+  />
+
+  <section id="faq" class="section section--subtle">
+    <div class="section-label">Frequently asked</div>
+    <div class="faq-list">
+      {
+        faq.map((item) => (
+          <details class="faq-item">
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+
+  <GitHubCTA />
+</Layout>
