@@ -2,11 +2,7 @@
 
 DevTools-style layout inspector for React. Hover any element in your app to see its tag, selector, dimensions, font, WCAG contrast ratio, ARIA role, accessible name, and a11y state — without ever leaving the page.
 
-
-
-https://github.com/user-attachments/assets/2217446f-723f-4d9b-9d72-24d202b7c9dd
-
-
+![Demo](https://raw.githubusercontent.com/shakcho/layout-inspector/main/assets/demo.gif)
 
 - 4-layer box-model overlay (margin / border / padding / content), just like Chrome DevTools
 - Floating info bubble that auto-positions and stays glued during scroll & resize
