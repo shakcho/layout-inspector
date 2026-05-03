@@ -1,3 +1,9 @@
+## [1.0.1](https://github.com/shakcho/layout-inspector/compare/v1.0.0...v1.0.1) (2026-05-03)
+
+### Bug Fixes
+
+- dummy release ([daab15a](https://github.com/shakcho/layout-inspector/commit/daab15a19d7650c733084bdcc73705ea85f5c550))
+
 # 1.0.0 (2026-05-03)
 
 ### Bug Fixes

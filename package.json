@@ -1,6 +1,6 @@
 {
   "name": "layout-inspector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "DevTools-style layout inspector for React. Hover any element for tag, selector, dimensions, font, WCAG contrast, ARIA role, accessible name, and a11y state.",
   "type": "module",
   "sideEffects": false,
